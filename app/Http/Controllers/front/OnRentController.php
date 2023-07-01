@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Building_Types;
 use App\Models\Contact;
 use App\Models\District;
+use App\Models\Logo;
 use App\Models\Pages;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class OnRentController extends Controller
         $build_type = $request->build_type;
         $district_type = $request->district_type;
         $artikul = $request->artikul;
-        
+        $logo = Logo::first();
         if (!empty($build_type)) {
             $query->where('products_building_type', $build_type)->where('onrest', 1);
         }
@@ -35,9 +36,8 @@ class OnRentController extends Controller
 
         $header = Pages::where('name', 'onrest')->first();
         $contacts = Contact::first();
-        $products = Products::where('onrest', 1)->paginate(10);
         $districts = District::all();
         $types = Building_Types::all();
-        return view("front.onRent", ['header' => $header, 'contacts' => $contacts, 'products' => $results, 'types' => $types, 'districts' => $districts]);
+        return view("front.onRent", ['header' => $header, 'contacts' => $contacts, 'products' => $results, 'types' => $types, 'districts' => $districts, 'logo' => $logo]);
     }
 }

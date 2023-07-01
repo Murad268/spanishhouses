@@ -64,7 +64,10 @@ class InstaPhotosController extends Controller
         if (!$instaPhoto) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $instaPhoto->img);
+        if(file_exists($imagePath . $instaPhoto->img)) {
+            unlink($imagePath . $instaPhoto->img);
+        }
+
         $updated = $instaPhoto->update($elems);
 
         if ($updated) {
@@ -79,7 +82,10 @@ class InstaPhotosController extends Controller
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
         // Storage::delete($imagePath . public_path('assets/front/images/instagram/'.$instaPhoto->img));
-        unlink($imagePath);
+        if(file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
         $deleted = $instaPhoto->delete();
         if (!$instaPhoto) {
             return redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");

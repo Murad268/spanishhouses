@@ -8,6 +8,9 @@
         <div>
             <input type="file" name="logo__image" id="">
         </div>
+        @error('logo__image')
+            <div class="mt-3 alert alert-danger">{{ $message }}</div>
+        @enderror
         <button href="{{route('admin.about.add')}}" class="mb-5 mt-3 btn btn-dark">new logo</button>
     </form>
     @endif

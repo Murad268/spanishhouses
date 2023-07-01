@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Building_Types;
 use App\Models\Contact;
 use App\Models\District;
+use App\Models\Logo;
 use App\Models\NewBuildings;
 use App\Models\Pages;
 use App\Models\Products;
@@ -17,7 +18,8 @@ class NewBuildingsController extends Controller
         $contacts = Contact::first();
         $header = Pages::where('name', 'newsbuilding')->first();
         $newsBuildings = NewBuildings::paginate(6);
-        return view("front.oneNewBuilndings", ['contacts' => $contacts, 'header' => $header, 'newsBuildings' => $newsBuildings]);
+        $logo = Logo::first();
+        return view("front.oneNewBuilndings", ['contacts' => $contacts, 'header' => $header, 'newsBuildings' => $newsBuildings, 'logo' => $logo]);
 
     }
     public function onebuilding(Request $request, $id) {
@@ -37,10 +39,10 @@ class NewBuildingsController extends Controller
         $results = $query->paginate(6);
 
         $contacts = Contact::first();
-        $products = Products::where('is_newbuilding', 1)->where('newbuildings_id', $id)->paginate(6);
+        $logo = Logo::first();
         $dis = NewBuildings::findOrFail($id);
         $districts = District::all();
         $types = Building_Types::all();
-        return view("front.newBuildings", ['id' => $id, 'products' => $results, 'contacts' => $contacts, 'dis' => $dis, 'districts' => $districts, 'types' => $types, ]);
+        return view("front.newBuildings", ['id' => $id, 'products' => $results, 'contacts' => $contacts, 'dis' => $dis, 'districts' => $districts, 'types' => $types, 'logo' => $logo ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\about;
 use App\Models\Contact;
 use App\Models\Founder;
 use App\Models\InstaPhotos;
+use App\Models\Logo;
 use App\Models\Pages;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class HomeController extends Controller
         $founder = Founder::first();
         $products = Products::paginate(4);
         $header = Pages::where('name', 'home')->first();
-
-        return view("front.home", ['contacts' => $contacts, 'about' => $about, 'photos' => $photos, 'founder' => $founder, 'products' => $products, 'header' => $header]);
+        $logo = Logo::first();
+        return view("front.home", ['contacts' => $contacts, 'about' => $about, 'photos' => $photos, 'founder' => $founder, 'products' => $products, 'header' => $header, 'logo' => $logo]);
     }
 }

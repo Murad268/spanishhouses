@@ -12,12 +12,13 @@ class HeaderComponent extends Component
     public$esp;
     public $fb;
     public $insta;
+    public $logo;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct( $contacts)
+    public function __construct( $contacts, $logo)
     {
         $this->contacts = $contacts;
         $this->wp = $contacts->whatsapp_number;
@@ -25,6 +26,7 @@ class HeaderComponent extends Component
         $this->esp = $contacts->spanish_number;
         $this->fb = $contacts->instagram_link;
         $this->insta = $contacts->facebook_link;
+        $this->logo = $logo->logo;
     }
 
     /**
@@ -35,6 +37,6 @@ class HeaderComponent extends Component
     public function render()
     {
 
-        return view('components.header-component', ['wp' => $this->wp, 'esp' => $this->esp, 'fb' => $this->fb, 'insta' => $this->insta]);
+        return view('components.header-component', ['wp' => $this->wp, 'esp' => $this->esp, 'fb' => $this->fb, 'insta' => $this->insta, 'logo' => $this->logo]);
     }
 }

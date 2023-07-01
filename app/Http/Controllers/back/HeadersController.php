@@ -74,7 +74,10 @@ class HeadersController extends Controller
         if (!$headers) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath. $headers->img);
+        if(file_exists($imagePath. $headers->img)) {
+            unlink($imagePath. $headers->img);
+        }
+
         $updated = $headers->update($elems);
 
         if ($updated) {
@@ -88,7 +91,10 @@ class HeadersController extends Controller
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
         $imagePath = 'assets/front/images/header/';
-        unlink($imagePath. $headers->img);
+        if(file_exists($imagePath. $headers->img)) {
+            unlink($imagePath. $headers->img);
+        }
+
         $deleted = $headers->delete($id);
 
         if ($deleted) {

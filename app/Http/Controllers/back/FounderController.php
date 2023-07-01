@@ -72,7 +72,10 @@ class FounderController extends Controller
         if (!$founder) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath. $founder->img);
+        if(file_exists($imagePath. $founder->img)) {
+            unlink($imagePath. $founder->img);
+        }
+
         $updated = $founder->update($elems);
 
         if ($updated) {
@@ -88,7 +91,10 @@ class FounderController extends Controller
         if (!$founder) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath. $founder->img);
+        if(file_exists($imagePath. $founder->img)) {
+            unlink($imagePath. $founder->img);
+        }
+
         $deleted = $founder->delete();
 
         if ($deleted) {

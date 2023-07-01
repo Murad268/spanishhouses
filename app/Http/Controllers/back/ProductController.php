@@ -128,6 +128,10 @@ class ProductController extends Controller
 
     public function products_images_delete($id, $product_id) {
         $img = ProductImg::findOrFail($id);
+        $imagePath = 'assets/front/images/products/';
+        if(file_exists($imagePath. $img->product_image)) {
+            unlink($imagePath. $img->product_image);
+        }
         $deleted = $img->delete($id);
         if($deleted) {
             return redirect()->route('admin.products_images.imagesId', ['id' => $product_id])->with("message", "verilənlər uğurla silindilər");

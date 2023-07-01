@@ -67,7 +67,10 @@ class AboutController extends Controller
         if (!$about) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath. $about->img);
+        if(file_exists($imagePath. $about->img)) {
+            unlink($imagePath. $about->img);
+        }
+
 
         $updated = $about->update($elems);
 
@@ -82,7 +85,10 @@ class AboutController extends Controller
         if (!$about) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath. $about->img);
+        if(file_exists($imagePath. $about->img)) {
+            unlink($imagePath. $about->img);
+        }
+
         $deleted = $about->delete();
 
         if ($deleted) {

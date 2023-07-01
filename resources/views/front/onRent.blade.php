@@ -66,7 +66,7 @@
         </div>
         @endif
         @else
-        <div class="non_tov">heç bir məhsul tapılmadı</div>
+        <div class="non_tov">продукты не найдены</div>
         @endif
     </div>
 </section>

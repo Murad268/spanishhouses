@@ -46,7 +46,7 @@
         <div class="container">
             <div class="navbar__wrapper">
                 <a href="{{route('home')}}" class="navbar__logo">
-                    <img src="{{asset('assets/front/icons/navbar/2 белый фон 1.png')}}" alt="">
+                    <img src="{{asset('assets/front/icons/navbar/'.$logo)}}" alt="">
                 </a>
                 <div class="navbar__btns">
                     <div class="navbar__btns__numbers main__numbers">

@@ -20,7 +20,7 @@ class LogoController extends Controller
 
         $extension = $img->getClientOriginalExtension();
         $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/header/';
+        $imagePath = 'assets/front/icons/navbar/';
         $lastName = $randomName . "." . $extension;
         $lasPath = $imagePath . $randomName . "." . $extension;
         Image::make($img)->resize(255, 60)->save($lasPath);
@@ -37,11 +37,14 @@ class LogoController extends Controller
 
     public function delete($id) {
         $logo = Logo::findOrFail($id);
-        $imagePath = public_path('assets/front/images/header/'.$logo->logo);
+        $imagePath = 'assets/front/icons/navbar/'.$logo->logo;
         if (!$logo) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        unlink($imagePath);
+        if(file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
         $deleted = $logo->delete();
 
         if ($deleted) {

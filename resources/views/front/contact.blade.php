@@ -12,6 +12,7 @@
 @endsection
 @section("content")
 <section class="about">
+
     <div class="container">
         <div class="about__wrapper">
             <div class="about__desc">

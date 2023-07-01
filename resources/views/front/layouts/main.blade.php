@@ -4,7 +4,7 @@
 <body>
 
 
-<x-header-component :contacts="$contacts" />
+<x-header-component :logo="$logo" :contacts="$contacts" />
 
 
     @yield('content');
