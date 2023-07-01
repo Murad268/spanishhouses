@@ -11,6 +11,9 @@
             <li class="{{ Request::routeIs('admin.home') ? 'active' : '' }}">
                 <a href="{{route('admin.home')}}"><span class="fa fa-home mr-3"></span> Dashboard</a>
             </li>
+            <li class="{{ Request::routeIs('admin.logo.index') ? 'active' : '' }}">
+                <a href="{{route('admin.logo.index')}}"><span class="fa fa-home mr-3"></span> Logo</a>
+            </li>
             <li class="{{ Request::routeIs('admin.about.index') ? 'active' : '' }}">
                 <a href="{{route('admin.about.index')}}"><span class="fa fa-user mr-3"></span> About</a>
             </li>

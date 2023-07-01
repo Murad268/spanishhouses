@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use File;
 class InstaPhotosController extends Controller
 {
     public function index()
@@ -74,14 +74,15 @@ class InstaPhotosController extends Controller
 
     public function delete($id) {
         $instaPhoto = InstaPhotos::findOrFail($id);
-        $imagePath = 'assets/front/images/instagram/';
+        $imagePath = public_path('assets/front/images/instagram/'.$instaPhoto->img);
         if (!$instaPhoto) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $instaPhoto->img);
+        // Storage::delete($imagePath . public_path('assets/front/images/instagram/'.$instaPhoto->img));
+        unlink($imagePath);
         $deleted = $instaPhoto->delete();
         if (!$instaPhoto) {
-            redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
+            return redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
         if ($deleted) {
             return redirect()->route('admin.instaphotos.index')->with("message", "verilənlər uğurla silindi");

@@ -57,7 +57,7 @@ class NewBuildingsController extends Controller
         if (!$newbuiling) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $newbuiling->img);
+        unlink($imagePath. $newbuiling->img);
         $updated = $newbuiling->update($elems);
 
         if ($updated) {
@@ -72,7 +72,7 @@ class NewBuildingsController extends Controller
         if (!$newbuild) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $newbuild->img);
+        unlink($imagePath. $newbuild->img);
         $deleted = $newbuild->delete();
 
         if ($deleted) {

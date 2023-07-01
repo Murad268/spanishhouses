@@ -295,6 +295,11 @@ return [
         ],
         "newbuildings_id" => [
             'required' => 'yeni tikilinin tipinin seçimi mütləqdir.',
+        ],
+        "logo__image" => [
+            'required' => 'logo şəklinin seçimi mütləqdir.',
+            'image' => 'seçdiyiniz fayl bir şəkil olmalıdır.',
+            'mimes' => 'şəkil formatı jpg, png, webp və ya svg olmalıdır.'
         ]
     ],
 

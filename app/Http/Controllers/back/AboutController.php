@@ -12,7 +12,7 @@ class AboutController extends Controller
 {
 
     public function index() {
-       
+
         $about = about::all();
         return view('back.about.about', ['about' => $about]);
     }
@@ -67,7 +67,8 @@ class AboutController extends Controller
         if (!$about) {
             redirect()->back()->with("error__message", "verilənlərin yüklənməsi zamanı xəta. Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $about->img);
+        unlink($imagePath. $about->img);
+
         $updated = $about->update($elems);
 
         if ($updated) {
@@ -81,7 +82,7 @@ class AboutController extends Controller
         if (!$about) {
             redirect()->back()->with("error__message", "verilənlərin silinməsi zamanı xəta Bir az sonra yenidən cəhd edin");
         }
-        Storage::delete($imagePath . $about->img);
+        unlink($imagePath. $about->img);
         $deleted = $about->delete();
 
         if ($deleted) {

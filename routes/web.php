@@ -17,6 +17,7 @@ use App\Http\Controllers\back\DistrcitController;
 use App\Http\Controllers\back\FounderController;
 use App\Http\Controllers\back\HeadersController;
 use App\Http\Controllers\back\InstaPhotosController;
+use App\Http\Controllers\back\LogoController;
 use App\Http\Controllers\back\NewBuildingsController as AdminNewBuildingsController;
 use App\Http\Controllers\back\ProductController as AdminProductController;
 
@@ -39,7 +40,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::post('/login_check', [AdminController::class, "login_check"])->name("login_check");
     Route::get('/logout', [AdminController::class, "logout"])->name("logout");
 
-
+    Route::group(['middleware' => 'checklogin', 'prefix' => 'logo', 'as' => 'logo.'], function() {
+        Route::get('/', [LogoController::class, "index"])->name("index");
+        Route::post('/create', [LogoController::class, "create"])->name("create");
+        Route::get('/delete/{id}', [LogoController::class, "delete"])->name("delete");
+    });
     Route::group(['middleware' => 'checklogin', 'prefix' => 'about', 'as' => 'about.'], function() {
         Route::get('/', [AboutController::class, "index"])->name("index");
         Route::get('/add', [AboutController::class, "add"])->name("add");
