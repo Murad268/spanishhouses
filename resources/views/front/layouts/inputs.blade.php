@@ -1,5 +1,5 @@
 <div class="page__inputs page__inputs__LOP">
-    <form method="POST" action="{{ Request::routeIs('resale') ? route('resale') : (Request::routeIs('onrent') ? route('onrent') : (Request::routeIs('onebuilding') ? route('onebuilding', ['id'=>$id]) : '')) }}"
+    <form method="POST" action="{{ Request::routeIs('resale') ? route('resale') : (Request::routeIs('onrent') ? route('onrent') : (Request::routeIs('onebuilding') ? route('onebuilding', ['id'=>$id]) : route('resale'))) }}"
 >
     @csrf
     <input type="hidden" name="build_type" class="build_type">

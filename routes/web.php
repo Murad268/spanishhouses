@@ -31,7 +31,7 @@ Route::get('/land', [LandController::class, "index"])->name("land");
 Route::get('/contact', [ContactController::class, "index"])->name("contact");
 Route::get('/resale', [ResaleController::class, "index"])->name("resale");
 Route::post('/resale', [ResaleController::class, "index"])->name("resale");
-Route::get('/product', [ProductController::class, "index"])->name("product");
+Route::get('/product/{id}', [ProductController::class, "index"])->name("product");
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {

@@ -146,4 +146,5 @@ class ProductController extends Controller
             return redirect()->route('admin.products_images.imagesId', ['id' => $product_id])->with("message", "əsaЫ şəkil təyin edildi");
         }
     }
+
 }

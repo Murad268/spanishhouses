@@ -49,7 +49,7 @@
         <div class="reccomended__wrapper">
             @foreach($products as $product)
 
-            <div class="reccomended__item">
+            <a href="{{route('product', ['id' => $product->id])}}" class="reccomended__item">
                 <div class="reccomended__item__img">
                     @php
                     $isMainExists = false;
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-            </div>
+            </a>
             @endforeach
 
 
