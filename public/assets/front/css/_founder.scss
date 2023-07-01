@@ -1,0 +1,40 @@
+.founder {
+   padding-top: 52px;
+   margin-top: 52px;
+   .title {
+      margin-bottom: 15px;
+   }
+   .subtext {
+      margin-bottom: 25px;
+   }
+   &__image {
+      flex: 1;
+   }
+   &__desc {
+      flex: 1
+   }
+   .subfooter {
+      margin-top: 28px;
+      margin-bottom: 27px;
+   }
+   &__wrapper {
+      display: flex;
+      align-items: center;
+   }
+}
+
+@media(max-width: 1140px) {
+   .founder {
+      &__wrapper {
+         row-gap: 80px;
+         flex-direction: column;
+      }
+      &__image {
+         width: 100%;
+         .image__stand {
+            margin: 0 auto;
+            height: 300px;
+         }
+      }
+   }
+}
