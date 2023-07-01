@@ -49,7 +49,7 @@ product
             <div class="product__desc">
                 <div class="product__desc__box">
                     <div class="product__desc__box__top">
-                        € {{$product->products_price}}
+                        € {{number_format($product->products_price, 0, ',', '.')}}
                     </div>
 
                     <div class="product__desc__box__body">

@@ -73,7 +73,7 @@
                     <div class="cart__item__body">
                         <div class="cart__title">{{$product->district->name}} - {{$product->artikul}}</div>
                         <div class="cart__subtitle">{{mb_strlen($product->products_title)>20?mb_substr($product->products_title, 0, 20).'...':$product->products_title}}</div>
-                        <div class="cart__price">€{{$product->products_price}}</div>
+                        <div class="cart__price">€ {{number_format($product->products_price, 0, ',', '.')}}</div>
                         <div class="cart__foot_top">
                             <span>Площадь: {{$product->square}} м2</span><span>Спальни: {{$product->bedrooms}}</span>
                         </div>
