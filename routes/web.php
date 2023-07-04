@@ -33,7 +33,7 @@ Route::get('/resale', [ResaleController::class, "index"])->name("resale");
 Route::post('/resale', [ResaleController::class, "index"])->name("resale");
 Route::get('/product/{id}', [ProductController::class, "index"])->name("product");
 
-v
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', [AdminController::class, "index"])->name("home")->middleware('checklogin');
     Route::get('/login', [AdminController::class, "login"])->name("login");
